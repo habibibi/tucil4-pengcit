@@ -60,7 +60,7 @@ if __name__ == "__main__":
     title_font = ("Arial", 12, "bold")
 
     window = Tk() 
-    window.title('File Explorer')
+    window.title('Tugas 4 Pemrosesan Citra Digital')
     window.geometry("1000x650")
     window.config(background = "white smoke")
         
