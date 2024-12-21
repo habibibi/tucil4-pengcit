@@ -1,12 +1,16 @@
 import threading
-from tkinter.ttk import Progressbar
-import cv2
-import CNN
-import numpy as np
-from ultralytics import YOLO
 from tkinter import *
 from tkinter import filedialog
+from tkinter.ttk import Progressbar
+
+import cv2
+import numpy as np
 from PIL import Image, ImageTk
+from ultralytics import YOLO
+
+import CNN
+import SVM
+
 
 def putImage(canvas : Canvas, image_array):
     canvas_width = canvas.winfo_width()
@@ -36,8 +40,9 @@ def browseFiles():
                 file_location_text.set(file_path)
                 putImage(image_input, image)
 
-                conv_class_name = "placeholder" # TODO: conventional output
-                putImage(out_conv_image, image)
+                # conventional output
+                [conv_class_name, conv_image] = SVM.predict(image.copy())
+                putImage(out_conv_image, conv_image)
                 out_conv_classname.set(conv_class_name)
 
                 # cnn output
@@ -117,6 +122,7 @@ if __name__ == "__main__":
     out_cnn_classname = StringVar()
     out_cnn_label = Label(right_frame, textvariable=out_cnn_classname)
     out_cnn_label.pack(pady=5)
+    
     progress = Progressbar(left_frame, mode="indeterminate", length=200)
     progress.pack(pady=10)
     progress.pack_forget()
