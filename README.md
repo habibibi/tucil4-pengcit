@@ -1,4 +1,4 @@
-# tucil4-pengcit Sistem Pengenalan Jenis Kendaran
+# Tugas 4 Pemrosesan Citra Digital - Sistem Pengenalan Jenis Kendaran
 
 ## Requirement
 - Python >= 3.9
